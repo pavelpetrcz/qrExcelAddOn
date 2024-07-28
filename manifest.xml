@@ -8,6 +8,6 @@
   <extensionPoint id="CustomTaskPane">
     <displayName>Hello World Add-in</displayName>
     <description>A simple add-in that displays "Hello World"</description>
-    <icon url="icon.png"/> <popup url="taskpane.html"/>
+    <icon url="icon.png"/> <popup url="https://raw.githubusercontent.com/pavelpetrcz/qrExcelAddOn/main/taskpane.html"/>
   </extensionPoint>
 </manifest>
