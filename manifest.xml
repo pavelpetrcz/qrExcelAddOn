@@ -1,13 +1,17 @@
-<manifest xmlns="http://schemas.microsoft.com/office/taskpane/2016-05-11" 
-          version="1.0">
-  <basePermissions enabled="false"/>
-  <permissions></permissions>
-  <frameworks>
-    <version targetVersion="1.6"/>
-  </frameworks>
-  <extensionPoint id="CustomTaskPane">
-    <displayName>Hello World Add-in</displayName>
-    <description>A simple add-in that displays "Hello World"</description>
-    <icon url="icon.png"/> <popup url="https://raw.githubusercontent.com/pavelpetrcz/qrExcelAddOn/main/taskpane.html"/>
-  </extensionPoint>
-</manifest>
+<?xml version="1.0" encoding="utf-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
+  <Id>4b7054d8-0bc2-4110-a5e6-15810d415ccb</Id>
+  <Version>1.0.0.1</Version>
+  <ProviderName>Pavel Petr</ProviderName>
+  <IconUrl DefaultValue="string" />
+  <DefaultLocale>cs-CZ</DefaultLocale>
+  <DisplayName DefaultValue="QR Platba"/>
+  <Description DefaultValue="QR Platba"/>
+  <Hosts>
+    <Host Name="Workbook"/>
+  </Hosts>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://raw.githubusercontent.com/pavelpetrcz/qrExcelAddOn/main/taskpane.html"/>
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+</OfficeApp>
