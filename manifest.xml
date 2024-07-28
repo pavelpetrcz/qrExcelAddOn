@@ -1,0 +1,13 @@
+<manifest xmlns="http://schemas.microsoft.com/office/taskpane/2016-05-11" 
+          version="1.0">
+  <basePermissions enabled="false"/>
+  <permissions></permissions>
+  <frameworks>
+    <version targetVersion="1.6"/>
+  </frameworks>
+  <extensionPoint id="CustomTaskPane">
+    <displayName>Hello World Add-in</displayName>
+    <description>A simple add-in that displays "Hello World"</description>
+    <icon url="icon.png"/> <popup url="taskpane.html"/>
+  </extensionPoint>
+</manifest>
