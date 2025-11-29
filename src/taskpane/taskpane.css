@@ -66,12 +66,13 @@
  }
  
 .ms-Button.ms-Button--hero .ms-Button-label {
-  color: #0078d7;
+    /* Hero button label color aligned with Excel's color palette */
+    color: var(--excel-dark);
 }
 
 .ms-Button.ms-Button--hero:hover .ms-Button-label,
 .ms-Button.ms-Button--hero:focus .ms-Button-label{
-  color: #005a9e;
+    color: var(--excel-darker);
   cursor: pointer;
 }
 
@@ -197,10 +198,10 @@ body {
 }
 
 hr {
-    border: 3px solid #f08017;
+    border: 3px solid var(--excel-green);
     width: 100%;
     /* Adjust width as needed */
-    margin: 5x auto;
+    margin: 5px auto;
     /* Center the line */
 }
 
@@ -216,7 +217,7 @@ input,
 select {
     width: 100%;
     padding: 10px;
-    border: 2px solid #908b87eb;
+    border: 2px solid var(--accent-border);
     border-radius: 4px;
     box-sizing: border-box;
     margin-bottom: 2px;
@@ -224,8 +225,8 @@ select {
 }
 
 button {
-    background-color: #f08017;
-    /* Green */
+    background-color: var(--excel-green);
+    /* Excel green theme */
     border: none;
     color: white;
     padding: 15px 32px;
@@ -244,4 +245,17 @@ button {
 
 #response {
     margin-top: 20px;
+}
+
+/* Excel color theme variables (green-based) */
+:root {
+    --excel-green: #107c10; /* Excel primary green */
+    --excel-dark: #0b6624; /* slightly darker green for labels */
+    --excel-darker: #09521a; /* hover/active state */
+    --accent-border: rgba(144, 139, 135, 0.92);
+}
+
+button:hover,
+button:focus {
+    background-color: var(--excel-darker);
 }
