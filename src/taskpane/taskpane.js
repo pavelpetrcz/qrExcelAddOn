@@ -53,9 +53,23 @@ export async function submitForm() {
   if (btn) btn.disabled = true;
   if (respElm) respElm.innerText = 'Generating…';
 
-  // Basic validation
-  if (!qr_dest) {
-    if (respElm) respElm.innerText = 'Please provide a target cell (e.g., E2) into which the QR image will be inserted.';
+  // Basic validation of required inputs
+  const missing = [];
+  // accountPrefix is optional now; do not collect it in missing
+  if (!accountNumber || accountNumber.trim() === '') missing.push('Číslo účtu');
+  if (!bankCode || bankCode.trim() === '') missing.push('Kód banky');
+  if (!amount || amount.trim() === '') missing.push('Částka');
+  if (!qr_dest || qr_dest.trim() === '') missing.push('Cíl QR');
+  
+  if (missing.length > 0) {
+    if (respElm) respElm.innerText = 'Pole chybí: ' + missing.join(', ');
+    if (btn) btn.disabled = false;
+    return;
+  }
+  // amount validation
+  const amountNum = Number(amount.toString().replace(',', '.'));
+  if (Number.isNaN(amountNum) || amountNum <= 0) {
+    if (respElm) respElm.innerText = 'Neplatná částka; zadejte prosím kladné číslo.';
     if (btn) btn.disabled = false;
     return;
   }
@@ -63,20 +77,20 @@ export async function submitForm() {
   // Define the API endpoint URL (use HTTPS to avoid mixed-content errors)
   const apiUrl = 'https://api.paylibo.com/paylibo/generator/czech/image';
 
-  // Build the query string with parameters
-  const queryString = new URLSearchParams({
-    accountPrefix,
-    accountNumber,
-    bankCode,
-    amount,
-    currency,
-    vs,
-    ks,
-    ss,
-    message,
-  });
+  // Build the query string with only non-empty parameters
+  const queryParams = new URLSearchParams();
+  if (accountPrefix) queryParams.set('accountPrefix', accountPrefix);
+  if (accountNumber) queryParams.set('accountNumber', accountNumber);
+  if (bankCode) queryParams.set('bankCode', bankCode);
+  if (amountNum) queryParams.set('amount', amountNum.toString());
+  if (currency) queryParams.set('currency', currency);
+  if (vs) queryParams.set('vs', vs);
+  if (ks) queryParams.set('ks', ks);
+  if (ss) queryParams.set('ss', ss);
+  if (message) queryParams.set('message', message);
 
-  const fullUrl = `${apiUrl}?${queryString.toString()}`;
+  const fullUrl = `${apiUrl}?${queryParams.toString()}`;
+  console.debug('Full API URL will be called:', fullUrl);
 
   try {
     const response = await fetch(fullUrl);
