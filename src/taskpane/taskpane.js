@@ -129,7 +129,7 @@ export async function submitForm() {
           console.log('Image inserted successfully');
           if (respElm) respElm.innerText = 'QR image generated and inserted successfully.';
         } catch (err) {
-          if (respElm) respElm.innerText = 'Error inserting image: ' + (err && err.message);
+          if (respElm) respElm.innerText = 'Chyba vložení QR kodu: ' + (err && err.message);
           console.error('Error inserting image:', err);
         }
       });
@@ -143,10 +143,10 @@ export async function submitForm() {
         respElm.innerHTML = '';
         respElm.appendChild(previewImg);
       }
-      if (respElm) respElm.innerText = 'QR generated (preview).';
+      if (respElm) respElm.innerText = 'QR generován úspěšně.';
     }
   } catch (error) {
-    if (respElm) respElm.innerText = 'Error fetching image: ' + (error && error.message);
+    if (respElm) respElm.innerText = 'Chyba načtení QR kodu: ' + (error && error.message);
     console.error('Error fetching image:', error);
   } finally {
     if (btn) btn.disabled = false;
