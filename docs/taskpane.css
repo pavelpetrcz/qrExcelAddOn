@@ -1,0 +1,8 @@
+/* Simple copy of taskpane.css for GitHub Pages docs/ folder */
+html, body { width: 100%; height: 100%; margin: 0; padding: 0; }
+.wrapper { display: grid; grid-template-columns: 33% 33% 33%; grid-gap: 3px; background-color: #fff; color: #444; }
+.box { border-radius: 3px; padding: 3px; font-size: 100%; }
+/* Minimal styles for the demo */
+input, select { width: 100%; padding: 10px; border: 2px solid #908b87eb; border-radius: 4px; box-sizing: border-box; margin-bottom: 2px; }
+button { background-color: #f08017; border: none; color: white; padding: 12px 24px; border-radius: 4px; cursor: pointer; }
+#response { margin-top: 20px; }
