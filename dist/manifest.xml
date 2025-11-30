@@ -12,7 +12,6 @@
   <AppDomains>
     <AppDomain>https://www.ppetr.cz</AppDomain>
     <AppDomain>https://pavelpetrcz.github.io</AppDomain>
-    <AppDomain>https://raw.githubusercontent.com</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Workbook"/>
@@ -79,8 +78,8 @@
         <bt:String id="TaskpaneButton.Label" DefaultValue="Platební QR"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Váš doplněk byl úspěšně načten. Přejděte na kartu DOMŮ a klikněte na tlačítko 'Zobrazit podokno úloh' pro začátek."/>
-        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Kliknutím zobrazíte podokno úloh"/>
+        <bt:String id="GetStarted.Description" DefaultValue="Váš doplněk byl úspěšně načten."/>
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Kliknutím zobrazíte doplněk"/>
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>

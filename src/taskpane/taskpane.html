@@ -1,172 +1,154 @@
 <!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
 <!-- This file shows how to design a first-run page that provides a welcome screen to the user about the features of the add-in. -->
 
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="light dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
     <title>Platební QR kód</title>
 
     <!-- Office JavaScript API -->
     <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
 
     <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui#/. -->
-    <link rel="stylesheet"
-        href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"
+    />
 
     <!-- Template styles -->
     <link href="taskpane.css" rel="stylesheet" type="text/css" />
-</head>
+  </head>
 
-
-<body class="ms-Fabric">
-    <p class="info-text"><i>Povinná pole označena hvězdičkou.</i></p>
+  <body class="ms-Fabric">
+    <p class="info-text"><i>Povinná pole jsou označena hvězdičkou.</i></p>
     <form id="myForm" role="form" aria-labelledby="title">
-        <div class="wrapper">
-            <div class="box bic_label">
-                <label for="bic_prefix">Předčíslí, číslo účtu, kód banky*</label>
-            </div>
-
-            <div class="box bic_prefix">
-                <input id="bic_prefix" name="bic_prefix" required aria-required="true" placeholder="000000"><br>
-            </div>
-
-            <div class="box bic">
-                <label for="bic">Číslo účtu</label>
-                <input id="bic" name="bic" required aria-required="true" placeholder="0000000000"><br>
-            </div>
-
-            <div class="box bank_code">
-                <label for="bank_code">Kód banky</label>
-                <select id="bank_code" class="dropdown" name="bank_code" required aria-required="true" placeholder="0000">
-                    <option value="0100">0100 - Komerční banka, a.s.</option>
-                    <option value="0300">0300 - Československá obchodní banka, a. s.</option>
-                    <option value="0600">0600 - MONETA Money Bank, a.s.</option>
-                    <option value="0710">0710 - ČESKÁ NÁRODNÍ BANKA</option>
-                    <option value="0800">0800 - Česká spořitelna, a.s.</option>
-                    <option value="2010">2010 - Fio banka, a.s.</option>
-                    <option value="2060">2060 - Citfin, spořitelní družstvo</option>
-                    <option value="2070">2070 - TRINITY BANK a.s.</option>
-                    <option value="2100">2100 - ČSOB Hypoteční banka, a.s.</option>
-                    <option value="2200">2200 - Peněžní dům, spořitelní družstvo</option>
-                    <option value="2220">2220 - Artesa, spořitelní družstvo</option>
-                    <option value="2250">2250 - Banka CREDITAS a.s.</option>
-                    <option value="2260">2260 - NEY spořitelní družstvo</option>
-                    <option value="2275">2275 - Podnikatelská družstevní záložna</option>
-                    <option value="2600">2600 - Citibank Europe plc, organizační složka</option>
-                    <option value="2700">2700 - UniCredit Bank Czech Republic and Slovakia, a.s.</option>
-                    <option value="3030">3030 - Air Bank a.s.</option>
-                    <option value="3060">3060 - PKO BP S.A., Czech Branch</option>
-                    <option value="3500">3500 - ING Bank N.V.</option>
-                    <option value="4000">4000 - Max banka a.s.</option>
-                    <option value="4300">4300 - Národní rozvojová banka, a.s.</option>
-                    <option value="5500">5500 - Raiffeisenbank a.s.</option>
-                    <option value="5800">5800 - J&amp;T BANKA, a.s.</option>
-                    <option value="6000">6000 - PPF banka a.s.</option>
-                    <option value="6200">6200 - COMMERZBANK Aktiengesellschaft, pobočka Praha</option>
-                    <option value="6210">6210 - mBank S.A., organizační složka</option>
-                    <option value="6300">6300 - BNP Paribas S.A., pobočka Česká republika</option>
-                    <option value="6363">6363 - Partners Banka, a.s.</option>
-                    <option value="6700">6700 - Všeobecná úverová banka a.s., pobočka Praha</option>
-                    <option value="7910">7910 - Deutsche Bank Aktiengesellschaft Filiale Prag, organizační složka
-                    </option>
-                    <option value="7950">7950 - Raiffeisen stavební spořitelna a.s.</option>
-                    <option value="7960">7960 - ČSOB Stavební spořitelna, a.s.</option>
-                    <option value="7970">7970 - MONETA Stavební Spořitelna, a.s.</option>
-                    <option value="7990">7990 - Modrá pyramida stavební spořitelna, a.s.</option>
-                    <option value="8030">8030 - Volksbdank Raiffeisenbank Nordoberpfalz eG pobočka Cheb</option>
-                    <option value="8040">8040 - Oberbank AG pobočka Česká republika</option>
-                    <option value="8060">8060 - Stavební spořitelna České spořitelny, a.s.</option>
-                    <option value="8090">8090 - Česká exportní banka, a.s.</option>
-                    <option value="8150">8150 - HSBC Continental Europe, Czech Republic</option>
-                    <option value="8190">8190 - Sparkasse Oberlausitz-Niederschlesien</option>
-                    <option value="8198">8198 - FAS finance company s.r.o.</option>
-                    <option value="8220">8220 - Payment execution s.r.o.</option>
-                    <option value="8250">8250 - Bank of China (CEE) Ltd. Prague Branch</option>
-                    <option value="8255">8255 - Bank of Communications Co., Ltd., Prague Branch odštěpný závod</option>
-                    <option value="8265">8265 - Industrial and Commercial Bank of China Limited, Prague Branch, odštěpn
-                        závod</option>
-                    <option value="8280">8280 - B-Efekt a.s.</option>
-                    <option value="8500">8500 - Multitude Bank p.l.c.</option>
-                </select>
-            </div>
-
-            <div class="box am_label">
-                <label for="amount">Částka*</label>
-            </div>
-
-            <div class="box am_input">
-                <input id="amount" name="amount" required aria-required="true" placeholder="1000"><br>
-            </div>
-
-            <div class="box curr_label">
-                <label for="currency">Měna</label>
-            </div>
-
-            <div class="box curr_input">
-                <input id="currency" name="currency" disabled value="CZK"><br>
-            </div>
-
-            <div class="box vs_label">
-                <label for="vs">VS</label>
-            </div>
-
-            <div class="box vs_input">
-                <input id="vs" name="vs" placeholder="0000000000"><br>
-            </div>
-
-            <div class="box ss_label">
-                <label for="ss">SS</label>
-            </div>
-
-            <div class="box ss_input">
-                <input id="ss" name="ss" placeholder="0000000000"><br>
-            </div>
-
-            <div class="box ks_label">
-                <label for="ks">KS</label>
-            </div>
-
-            <div class="box ks_input">
-                <input id="ks" name="ks" placeholder="0000"><br>
-            </div>
-
-            <div class="box msg">
-                <label for="msg_input">Zpráva pro příjemce</label>
-            </div>
-
-            <div class="box msg_input">
-                <input id="msg_input" name="msg_input" placeholder="Peníze za ..."><br>
-            </div>
-
-            <div class="box separator">
-                <hr>
-            </div>
-
-            <div class="box qr_dest_label">
-                <label for="qr_dest">Cíl QR*</label>
-            </div>
-            <div class="box qr_dest_input">
-                <input id="qr_dest" name="qr_dest" required aria-required="true" placeholder="E2"><br>
-            </div>
-            <div class="box qr_options">
-                <label for="fitToCell">Změnit velikost na buňku</label>
-                <input id="fitToCell" type="checkbox" name="fitToCell" title="Pokud zaškrtnuto, QR kód se přizpůsobí rozměrům cílové buňky" />
-            </div>
+      <div class="wrapper">
+        <div class="box bic_prefix">
+          <label for="bic_prefix">Předčíslí</label>
+          <input id="bic_prefix" name="bic_prefix" aria-required="true" placeholder="123456" /><br />
         </div>
-        <button type="button" id="generateQrButton">Generovat platební QR kód</button>
+
+        <div class="box bic">
+          <label for="bic">Číslo účtu*</label>
+          <input id="bic" name="bic" required aria-required="true" placeholder="0000000000" /><br />
+        </div>
+
+        <div class="box bank_code">
+          <label for="bank_code">Kód banky*</label>
+          <select id="bank_code" class="dropdown" name="bank_code" required aria-required="true" placeholder="0000">
+            <option value="0100">0100 - Komerční banka, a.s.</option>
+            <option value="0300">0300 - Československá obchodní banka, a. s.</option>
+            <option value="0600">0600 - MONETA Money Bank, a.s.</option>
+            <option value="0710">0710 - ČESKÁ NÁRODNÍ BANKA</option>
+            <option value="0800">0800 - Česká spořitelna, a.s.</option>
+            <option value="2010">2010 - Fio banka, a.s.</option>
+            <option value="2060">2060 - Citfin, spořitelní družstvo</option>
+            <option value="2070">2070 - TRINITY BANK a.s.</option>
+            <option value="2100">2100 - ČSOB Hypoteční banka, a.s.</option>
+            <option value="2200">2200 - Peněžní dům, spořitelní družstvo</option>
+            <option value="2220">2220 - Artesa, spořitelní družstvo</option>
+            <option value="2250">2250 - Banka CREDITAS a.s.</option>
+            <option value="2260">2260 - NEY spořitelní družstvo</option>
+            <option value="2275">2275 - Podnikatelská družstevní záložna</option>
+            <option value="2600">2600 - Citibank Europe plc, organizační složka</option>
+            <option value="2700">2700 - UniCredit Bank Czech Republic and Slovakia, a.s.</option>
+            <option value="3030">3030 - Air Bank a.s.</option>
+            <option value="3060">3060 - PKO BP S.A., Czech Branch</option>
+            <option value="3500">3500 - ING Bank N.V.</option>
+            <option value="4000">4000 - Max banka a.s.</option>
+            <option value="4300">4300 - Národní rozvojová banka, a.s.</option>
+            <option value="5500">5500 - Raiffeisenbank a.s.</option>
+            <option value="5800">5800 - J&amp;T BANKA, a.s.</option>
+            <option value="6000">6000 - PPF banka a.s.</option>
+            <option value="6200">6200 - COMMERZBANK Aktiengesellschaft, pobočka Praha</option>
+            <option value="6210">6210 - mBank S.A., organizační složka</option>
+            <option value="6300">6300 - BNP Paribas S.A., pobočka Česká republika</option>
+            <option value="6363">6363 - Partners Banka, a.s.</option>
+            <option value="6700">6700 - Všeobecná úverová banka a.s., pobočka Praha</option>
+            <option value="7910">7910 - Deutsche Bank Aktiengesellschaft Filiale Prag, organizační složka</option>
+            <option value="7950">7950 - Raiffeisen stavební spořitelna a.s.</option>
+            <option value="7960">7960 - ČSOB Stavební spořitelna, a.s.</option>
+            <option value="7970">7970 - MONETA Stavební Spořitelna, a.s.</option>
+            <option value="7990">7990 - Modrá pyramida stavební spořitelna, a.s.</option>
+            <option value="8030">8030 - Volksbdank Raiffeisenbank Nordoberpfalz eG pobočka Cheb</option>
+            <option value="8040">8040 - Oberbank AG pobočka Česká republika</option>
+            <option value="8060">8060 - Stavební spořitelna České spořitelny, a.s.</option>
+            <option value="8090">8090 - Česká exportní banka, a.s.</option>
+            <option value="8150">8150 - HSBC Continental Europe, Czech Republic</option>
+            <option value="8190">8190 - Sparkasse Oberlausitz-Niederschlesien</option>
+            <option value="8198">8198 - FAS finance company s.r.o.</option>
+            <option value="8220">8220 - Payment execution s.r.o.</option>
+            <option value="8250">8250 - Bank of China (CEE) Ltd. Prague Branch</option>
+            <option value="8255">8255 - Bank of Communications Co., Ltd., Prague Branch odštěpný závod</option>
+            <option value="8265">
+              8265 - Industrial and Commercial Bank of China Limited, Prague Branch, odštěpný závod
+            </option>
+            <option value="8280">8280 - B-Efekt a.s.</option>
+            <option value="8500">8500 - Multitude Bank p.l.c.</option>
+          </select>
+        </div>
+
+        <div class="box am_input">
+          <label for="amount">Částka*</label>
+          <input id="amount" name="amount" required aria-required="true" placeholder="1000" /><br />
+        </div>
+
+        <div class="box curr_input">
+          <label for="currency">Měna</label>
+          <input id="currency" name="currency" disabled value="CZK" /><br />
+        </div>
+
+        <div class="box vs_input">
+          <label for="vs">VS</label>
+          <input id="vs" name="vs" placeholder="0000000000" /><br />
+        </div>
+
+        <div class="box ss_input">
+            <label for="ss">SS</label>
+            <input id="ss" name="ss" placeholder="0000000000" /><br />
+        </div>
+
+        <div class="box ks_input">
+            <label for="ks">KS</label>
+            <input id="ks" name="ks" placeholder="0000" /><br />
+        </div>
+
+        <div class="box msg_input">
+            <label for="msg_input">Zpráva pro příjemce</label>
+            <input id="msg_input" name="msg_input" placeholder="Peníze za ..." /><br />
+        </div>
+
+        <div class="box separator">
+          <hr />
+        </div>
+
+        <div class="box qr_dest_input">
+            <label for="qr_dest">Cílová buňka*</label>
+            <input id="qr_dest" name="qr_dest" required aria-required="true" placeholder="E2" /><br />
+        </div>
+        <div class="box qr_options">
+          <label for="fitToCell">Změnit velikost QR kodu podle buňky</label>
+          <input
+            id="fitToCell"
+            type="checkbox"
+            name="fitToCell"
+            title="Pokud zaškrtnuto, QR kód se přizpůsobí rozměrům cílové buňky"
+          />
+        </div>
+      </div>
+      <button type="button" id="generateQrButton">Generovat platební QR kód</button>
     </form>
     <div id="response" role="status" aria-live="polite"></div>
     <script type="module">
-        // Import the module and expose exported functions for quick browser testing
-        import * as Task from './taskpane.js';
-        // Make run and submitForm available globally for Excel's requirement and for quick manual calls
-        window.run = Task.run;
-        window.submitForm = Task.submitForm;
+      // Import the module and expose exported functions for quick browser testing
+      import * as Task from "./taskpane.js";
+      // Make run and submitForm available globally for Excel's requirement and for quick manual calls
+      window.run = Task.run;
+      window.submitForm = Task.submitForm;
     </script>
-</body>
+  </body>
 </html>
