@@ -1,14 +1,14 @@
-/* 
- * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
- * See LICENSE in the project root for license information.
- */
-
 html,
 body {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+/* Apply border-box for all elements to avoid layout breakages */
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -23,16 +23,12 @@ ul {
   padding-top: 100px;
   display: -webkit-flex;
   display: flex;
-  -webkit-flex-direction: column;
-  flex-direction: column;
   align-items: center;
 }
 
 .ms-welcome__main {
   display: -webkit-flex;
   display: flex;
-  -webkit-flex-direction: column;
-  flex-direction: column;
   -webkit-flex-wrap: nowrap;
   flex-wrap: nowrap;
   -webkit-align-items: center;
@@ -90,10 +86,9 @@ body {
 }
 
 .wrapper {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 8px 1fr 8px 1fr;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  -ms-grid-columns: 1fr 1fr 1fr;
   grid-gap: 8px;
   background-color: var(--page-bg);
   color: var(--page-fg);
@@ -107,6 +102,13 @@ body {
   padding: 3px;
   font-size: 100%;
   width: 100%;
+  min-width: 0; /* prevent flex or grid overflow */
+}
+
+.box label { 
+  display: block; 
+  margin-bottom: 6px; 
+  font-size: 0.95rem; 
 }
 
 .bic_label {
@@ -284,7 +286,7 @@ select:disabled {
   background-color: var(--currency-bg);
 }
 
-/* Color variables and theme tokens */
+/* Color variables and theme tokens - defined early so rest of stylesheet can use them */
 :root {
   /* Light theme */
   --page-bg: #ffffff;
@@ -321,7 +323,6 @@ select:disabled {
     --focus-outline: ButtonText;
   }
   * {
-    forced-color-adjust: none;
     -ms-high-contrast-adjust: none;
   }
 }
@@ -334,7 +335,8 @@ button:focus {
 /* Responsive layout for taskpane grid */
 @media (max-width: 900px) {
   .wrapper {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    -ms-grid-columns: 1fr 1fr;
   }
   .bic_prefix {
     grid-column: 1 / 2;
@@ -367,6 +369,7 @@ button:focus {
 @media (max-width: 520px) {
   .wrapper {
     grid-template-columns: 1fr;
+    -ms-grid-columns: 1fr;
   }
   /* stack everything on smaller widths */
   .bic_label,
