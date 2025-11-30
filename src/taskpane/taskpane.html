@@ -8,6 +8,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
     <title>Platební QR kód</title>
 
     <!-- Office JavaScript API -->
@@ -22,25 +23,27 @@
 </head>
 
 
-<body>
-    <h1>Platební QR kód</h1>
+<body class="ms-Fabric">
+    <h1 id="title">Platební QR kód</h1>
     <p><i>Povinná pole označena hvězdičkou.</i></p>
-    <form id="myForm">
+    <form id="myForm" role="form" aria-labelledby="title">
         <div class="wrapper">
             <div class="box bic_label">
                 <label for="bic_prefix">Předčíslí, číslo účtu, kód banky*</label>
             </div>
 
             <div class="box bic_prefix">
-                <input id="bic_prefix" name="bic_prefix" required placeholder="000000"><br>
+                <input id="bic_prefix" name="bic_prefix" required aria-required="true" placeholder="000000"><br>
             </div>
 
             <div class="box bic">
-                <input id="bic" name="bic" required placeholder="0000000000"><br>
+                <label for="bic">Číslo účtu</label>
+                <input id="bic" name="bic" required aria-required="true" placeholder="0000000000"><br>
             </div>
 
             <div class="box bank_code">
-                <select id="bank_code" class="dropdown" name="bank_code" required placeholder="0000">
+                <label for="bank_code">Kód banky</label>
+                <select id="bank_code" class="dropdown" name="bank_code" required aria-required="true" placeholder="0000">
                     <option value="0100">0100 - Komerční banka, a.s.</option>
                     <option value="0300">0300 - Československá obchodní banka, a. s.</option>
                     <option value="0600">0600 - MONETA Money Bank, a.s.</option>
@@ -98,7 +101,7 @@
             </div>
 
             <div class="box am_input">
-                <input id="amount" name="amount" required placeholder="1000"><br>
+                <input id="amount" name="amount" required aria-required="true" placeholder="1000"><br>
             </div>
 
             <div class="box curr_label">
@@ -149,12 +152,16 @@
                 <label for="qr_dest">Cíl QR*</label>
             </div>
             <div class="box qr_dest_input">
-                <input id="qr_dest" name="qr_dest" required placeholder="E2"><br>
+                <input id="qr_dest" name="qr_dest" required aria-required="true" placeholder="E2"><br>
+            </div>
+            <div class="box qr_options">
+                <label for="fitToCell">Změnit velikost na buňku</label>
+                <input id="fitToCell" type="checkbox" name="fitToCell" title="Pokud zaškrtnuto, QR kód se přizpůsobí rozměrům cílové buňky" />
             </div>
         </div>
         <button type="button" id="generateQrButton">Generovat platební QR kód</button>
     </form>
-    <div id="response"></div>
+    <div id="response" role="status" aria-live="polite"></div>
     <script type="module">
         // Import the module and expose exported functions for quick browser testing
         import * as Task from './taskpane.js';
