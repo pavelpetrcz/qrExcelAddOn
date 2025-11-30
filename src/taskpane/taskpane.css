@@ -1,39 +1,158 @@
+
+/* Theme variables */
+:root {
+  --page-bg: #ffffff;
+  --page-fg: #222222;
+  --input-bg: #ffffff;
+  --currency-bg: #efefef;
+  --excel-green: #107c10;
+  --excel-dark: #0b6624;
+  --excel-darker: #09521a;
+  --accent-border: rgba(144, 139, 135, 0.92);
+  --focus-outline: rgba(0, 0, 0, 0.15);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page-bg: #0b0b0b;
+    --page-fg: #e7e7e7;
+    --input-bg: #171717;
+    --currency-bg: #1e1e1e;
+    --accent-border: rgba(120, 120, 120, 0.6);
+    --excel-green: #21a621;
+    --excel-darker: #1a9b1a;
+    --focus-outline: rgba(255, 255, 255, 0.14);
+  }
+}
+
+@media (forced-colors: active) {
+  :root {
+    --page-bg: Window;
+    --page-fg: WindowText;
+    --input-bg: Field;
+    --currency-bg: Field;
+    --accent-border: ButtonText;
+    --focus-outline: ButtonText;
+  }
+  * { -ms-high-contrast-adjust: none; }
+}
+
+/* Reset & base */
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Tahoma, sans-serif;
+  font-size: small;
+  background-color: var(--page-bg);
+  color: var(--page-fg);
+  overflow-x: hidden; /* prevent horizontal scroll */
+}
+ul { margin: 0; padding: 0; }
+
+/* Header / Welcome - keep for compatibility with Office samples */
+.ms-welcome__header { padding: 20px 20px 30px; display:flex; flex-direction:column; align-items:center; }
+.ms-welcome__main { display:flex; flex-direction:column; align-items:center; padding:10px 20px; }
+.ms-welcome__main > h2 { width: 100%; text-align:center; }
+.ms-welcome__features { list-style:none; margin-top:20px; }
+.ms-welcome__features.ms-List .ms-ListItem { padding-bottom: 20px; display:flex; }
+.ms-welcome__action.ms-Button--hero { margin-top:30px; }
+
+/* Layout grid */
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+  max-width: 100%;
+  align-items: start;
+}
+.box { border-radius: 3px; padding: 6px; font-size: 100%; min-width: 0; }
+
+/* Column placement (default: 3 columns) */
+.bic_label       { grid-column: 1 / -1; }
+.bic_prefix      { grid-column: 1 / 2; }
+.bic             { grid-column: 2 / -1; }
+.bank_code       { grid-column: 1 / -1; }
+.am_label        { grid-column: 1 / 3; }
+.am_input        { grid-column: 1 / 3; }
+.curr_label      { grid-column: 3 / -1; }
+.curr_input      { grid-column: 3 / -1; }
+.vs_label        { grid-column: 1 / 2; }
+.ss_label        { grid-column: 2 / 3; }
+.ks_label        { grid-column: 3 / -1; }
+.vs_input        { grid-column: 1 / 2; }
+.ss_input        { grid-column: 2 / 3; }
+.ks_input        { grid-column: 3 / -1; }
+.msg             { grid-column: 1 / -1; }
+.msg_input       { grid-column: 1 / -1; }
+.separator       { grid-column: 1 / -1; }
+.qr_dest_label   { grid-column: 1 / -1; }
+.qr_dest_input   { grid-column: 1 / -1; }
+.qr_options      { grid-column: 1 / -1; display:flex; align-items:center; gap:8px; }
+
+/* Form controls */
+label { display:block; margin-bottom:6px; }
+input, select { width:100%; padding:10px; border:1px solid var(--accent-border); border-radius:6px; background:var(--input-bg); color:var(--page-fg); }
+input[disabled], select[disabled] { opacity:0.8; background:var(--currency-bg); }
+button { background:var(--excel-green); color: white; border:none; padding:12px 16px; width:100%; border-radius:6px; cursor:pointer; }
+button:hover, button:focus { background: var(--excel-darker); }
+input:focus, select:focus, button:focus { outline: 2px solid var(--focus-outline); outline-offset: 2px; }
+
+hr { border:0; height:3px; background:var(--excel-green); margin:8px 0; }
+
+/* Responsive: 2 columns (tablet) */
+@media (max-width: 900px) {
+  .wrapper { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bic_prefix  { grid-column: 1 / 2; }
+  .bic         { grid-column: 2 / -1; }
+  .curr_label, .curr_input { grid-column: 2 / -1; }
+  /* Move ks to flow below in 2 column view */
+  .ks_label, .ks_input { grid-column: 1 / -1; }
+}
+
+/* Responsive: 1 column (mobile) - stack everything */
+@media (max-width: 520px) {
+  .wrapper { grid-template-columns: 1fr; }
+  .wrapper > .box { grid-column: 1 / -1; }
+  button { font-size: 14px; }
+}
+
+/* Small polishing */
+.ms-Button.ms-Button--hero .ms-Button-label { color: var(--excel-dark); }
+.ms-Button.ms-Button--hero:hover .ms-Button-label, .ms-Button.ms-Button--hero:focus .ms-Button-label { color: var(--excel-darker); }
+
+/* Accessibility: status region */
+#response { margin-top: 20px; }
+
+/* Ensure media and images scale */
+img, svg { max-width: 100%; height: auto; display: block; }
 html,
 body {
   width: 100%;
   height: 100%;
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+.bic_label { grid-column: 1 / -1; }
 /* Apply border-box for all elements to avoid layout breakages */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
-ul {
-  margin: 0;
-  padding: 0;
-}
+.bic_prefix { grid-column: 1 / 2; }
 
 .ms-welcome__header {
   padding: 20px;
   padding-bottom: 30px;
   padding-top: 100px;
-  display: -webkit-flex;
-  display: flex;
-  align-items: center;
-}
+.bic { grid-column: 2 / -1; }
 
 .ms-welcome__main {
   display: -webkit-flex;
   display: flex;
   -webkit-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-flex: 1 0 0;
+.bank_code { grid-column: 1 / -1; }
   flex: 1 0 0;
   padding: 10px 20px;
 }
@@ -43,14 +162,8 @@ ul {
   text-align: center;
 }
 
-.ms-welcome__features {
-  list-style-type: none;
-  margin-top: 20px;
-}
-
-.ms-welcome__features.ms-List .ms-ListItem {
-  padding-bottom: 20px;
-  display: -webkit-flex;
+.am_label { grid-column: 1 / 3; }
+.am_input { grid-column: 1 / 3; }
   display: flex;
 }
 
@@ -60,14 +173,8 @@ ul {
 
 .ms-welcome__action.ms-Button--hero {
   margin-top: 30px;
-}
-
-.ms-Button.ms-Button--hero .ms-Button-label {
-  /* Hero button label color aligned with Excel's color palette */
-  color: var(--excel-dark);
-}
-
-.ms-Button.ms-Button--hero:hover .ms-Button-label,
+.curr_label { grid-column: 3 / -1; }
+.curr_input { grid-column: 3 / -1; }
 .ms-Button.ms-Button--hero:focus .ms-Button-label {
   color: var(--excel-darker);
   cursor: pointer;
@@ -93,30 +200,12 @@ body {
   background-color: var(--page-bg);
   color: var(--page-fg);
   width: 100%;
-  -ms-align-items: start;
-  align-items: start;
-}
-
-.box {
-  border-radius: 3px;
-  padding: 3px;
-  font-size: 100%;
-  width: 100%;
-  min-width: 0; /* prevent flex or grid overflow */
-}
-
-.box label { 
-  display: block; 
-  margin-bottom: 6px; 
-  font-size: 0.95rem; 
-}
-
-.bic_label {
-  grid-column: 1 / 4;
-  grid-row: 1;
-}
-
-.bic_prefix {
+.vs_label { grid-column: 1 / 2; }
+.ss_label { grid-column: 2 / 3; }
+.ks_label { grid-column: 3 / -1; }
+.vs_input { grid-column: 1 / 2; }
+.ss_input { grid-column: 2 / 3; }
+.ks_input { grid-column: 3 / -1; }
   grid-column: 1 / 2;
   grid-row: 2;
 }
@@ -126,23 +215,14 @@ body {
   grid-row: 2;
 }
 
-.bank_code {
-  grid-column: 1 / 4;
-  grid-row: 3;
-}
-
-.am_label {
-  grid-column: 1 / 3;
-  grid-row: 4;
+.msg { grid-column: 1 / -1; }
+.msg_input { grid-column: 1 / -1; }
 }
 
 .am_input {
   grid-column: 1 / 3;
   grid-row: 5;
-}
-
-.curr_label {
-  grid-column: 3 / 4;
+.separator { grid-column: 1 / -1; }
   grid-row: 4;
 }
 
@@ -152,14 +232,8 @@ body {
 }
 
 .vs_label {
-  grid-column: 1 / 2;
-  grid-row: 7;
-}
-
-.ss_label {
-  grid-column: 2 / 3;
-  grid-row: 7;
-}
+.qr_dest_label { grid-column: 1 / -1; }
+.qr_dest_input { grid-column: 1 / -1; }
 
 .ks_label {
   grid-column: 3 / 4;
@@ -396,6 +470,8 @@ button:focus {
     font-size: 14px;
     padding: 12px;
   }
+  /* Force every box item to full-width on very small screens */
+  .wrapper > .box { grid-column: 1 / -1; }
 }
 
 /* Fallback theme attribute for hosts that don't reflect OS color-scheme
