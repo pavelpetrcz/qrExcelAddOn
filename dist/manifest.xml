@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
+  <Id>4e266c6e-a992-4f90-aa1a-11b589e2b4d8</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Pavel Petr</ProviderName>
+  <DefaultLocale>cs-CZ</DefaultLocale>
+  <DisplayName DefaultValue="Platební QR kód"/>
+  <Description DefaultValue="Vygenerujte QR kódy pro platby přímo v Excelu."/>
+  <IconUrl DefaultValue="https://pavelpetrcz.github.io/qrExcelAddOn/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://pavelpetrcz.github.io/qrExcelAddOn/assets/icon-128.png"/>
+  <SupportUrl DefaultValue="https://www.ppetr.cz"/>
+  <AppDomains>
+    <AppDomain>https://www.ppetr.cz</AppDomain>
+    <AppDomain>https://pavelpetrcz.github.io</AppDomain>
+    <AppDomain>https://raw.githubusercontent.com</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Workbook"/>
+  </Hosts>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://pavelpetrcz.github.io/qrExcelAddOn/src/taskpane/taskpane.html"/>
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Workbook">
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="GetStarted.Title"/>
+            <Description resid="GetStarted.Description"/>
+            <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
+          </GetStarted>
+          <FunctionFile resid="Commands.Url"/>
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabHome">
+              <Group id="CommandsGroup">
+                <Label resid="CommandsGroup.Label"/>
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16x16"/>
+                  <bt:Image size="32" resid="Icon.32x32"/>
+                  <bt:Image size="80" resid="Icon.80x80"/>
+                </Icon>
+                <Control xsi:type="Button" id="TaskpaneButton">
+                  <Label resid="TaskpaneButton.Label"/>
+                  <Supertip>
+                    <Title resid="TaskpaneButton.Label"/>
+                    <Description resid="TaskpaneButton.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>ButtonId1</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url"/>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16x16" DefaultValue="https://pavelpetrcz.github.io/qrExcelAddOn/assets/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://pavelpetrcz.github.io/qrExcelAddOn/assets/icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://pavelpetrcz.github.io/qrExcelAddOn/assets/icon-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
+        <bt:Url id="Commands.Url" DefaultValue="https://pavelpetrcz.github.io/qrExcelAddOn/src/commands/commands.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://pavelpetrcz.github.io/qrExcelAddOn/src/taskpane/taskpane.html"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="GetStarted.Title" DefaultValue="Začněte s doplňkem"/>
+        <bt:String id="CommandsGroup.Label" DefaultValue="QR nástroje"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Platební QR"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="GetStarted.Description" DefaultValue="Váš doplněk byl úspěšně načten. Přejděte na kartu DOMŮ a klikněte na tlačítko 'Zobrazit podokno úloh' pro začátek."/>
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Kliknutím zobrazíte podokno úloh"/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>

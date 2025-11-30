@@ -12,7 +12,6 @@
   <AppDomains>
     <AppDomain>https://www.ppetr.cz</AppDomain>
     <AppDomain>https://pavelpetrcz.github.io</AppDomain>
-    <AppDomain>https://raw.githubusercontent.com</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Workbook"/>
