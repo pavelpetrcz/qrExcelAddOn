@@ -108,7 +108,7 @@ export async function submitForm() {
   try {
     const response = await fetch(fullUrl);
     if (!response.ok) {
-      throw new Error("Network response was not ok");
+      throw new Error("Vstupní data QR kodu nejsou v pořádku.");
     }
     const blob = await response.blob();
 
