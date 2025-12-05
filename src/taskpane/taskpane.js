@@ -72,7 +72,7 @@ export async function submitForm() {
   if (!accountNumber || accountNumber.trim() === "") missing.push("Číslo účtu");
   if (!bankCode || bankCode.trim() === "") missing.push("Kód banky");
   if (!amount || amount.trim() === "") missing.push("Částka");
-  if (!qr_dest || qr_dest.trim() === "") missing.push("Cíl QR");
+  if (!qr_dest || qr_dest.trim() === "") missing.push("Cílová buňka");
 
   if (missing.length > 0) {
     if (respElm) respElm.innerText = "Vyplňte prosím pole: " + missing.join(", ");
