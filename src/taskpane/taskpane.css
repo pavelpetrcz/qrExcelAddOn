@@ -47,6 +47,35 @@ input:focus, select:focus, button:focus { outline: 2px solid var(--focus-outline
 .qr_options { display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; }
 .qr_options > * + * { margin-left: 8px; }
 
+/* Response card - Bootstrap-style */
+.response-card {
+  display: none;
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid var(--accent-border);
+  border-radius: 6px;
+  background-color: var(--currency-bg);
+  color: var(--page-fg);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  min-height: 40px;
+  align-items: center;
+}
+
+.response-card:not(:empty) {
+  display: flex;
+}
+
+@media (prefers-color-scheme: dark) {
+  .response-card {
+    color: #ffffff;
+    background-color: var(--currency-bg);
+    border-color: var(--accent-border);
+  }
+}
+
 #response { margin-top: 10px; }
 img, svg { max-width: 100%; height: auto; display: block; }
 
