@@ -75,14 +75,14 @@ export async function submitForm() {
   if (!qr_dest || qr_dest.trim() === "") missing.push("Cíl QR");
 
   if (missing.length > 0) {
-    if (respElm) respElm.innerText = "Pole chybí: " + missing.join(", ");
+    if (respElm) respElm.innerText = "Vyplňte prosím pole: " + missing.join(", ");
     if (btn) btn.disabled = false;
     return;
   }
   // amount validation
   const amountNum = Number(amount.toString().replace(",", "."));
   if (Number.isNaN(amountNum) || amountNum <= 0) {
-    if (respElm) respElm.innerText = "Neplatná částka; zadejte prosím kladné číslo.";
+    if (respElm) respElm.innerText = "Neplatná částka. Zadejte prosím kladné celé číslo.";
     if (btn) btn.disabled = false;
     return;
   }
@@ -108,7 +108,7 @@ export async function submitForm() {
   try {
     const response = await fetch(fullUrl);
     if (!response.ok) {
-      throw new Error("Vstupní data QR kodu nejsou v pořádku.");
+      throw new Error("Vstupní data QR kódu nejsou v pořádku. Zkontrolujte je prosím. A zkuste to znovu.");
     }
     const blob = await response.blob();
 
@@ -145,9 +145,9 @@ export async function submitForm() {
           }
           await context.sync();
           console.log("Image inserted successfully");
-          if (respElm) respElm.innerText = "QR image generated and inserted successfully.";
+          if (respElm) respElm.innerText = "QR kód úspěšně vložen!";
         } catch (err) {
-          if (respElm) respElm.innerText = "Chyba vložení QR kodu: " + (err && err.message);
+          if (respElm) respElm.innerText = "Chyba vložení QR kódu: " + (err && err.message);
           console.error("Error inserting image:", err);
         }
       });
@@ -161,10 +161,10 @@ export async function submitForm() {
         respElm.innerHTML = "";
         respElm.appendChild(previewImg);
       }
-      if (respElm) respElm.innerText = "QR generován úspěšně.";
+      if (respElm) respElm.innerText = "QR kód vygenerován úspěšně.";
     }
   } catch (error) {
-    if (respElm) respElm.innerText = "Chyba načtení QR kodu: " + (error && error.message);
+    if (respElm) respElm.innerText = "Chyba načtení QR kódu: " + (error && error.message);
     console.error("Error fetching image:", error);
   } finally {
     if (btn) btn.disabled = false;
