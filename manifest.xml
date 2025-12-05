@@ -7,7 +7,7 @@
   <DisplayName DefaultValue="Platební QR kód"/>
   <Description DefaultValue="Vygenerujte QR kódy pro platby přímo v Excelu."/>
   <IconUrl DefaultValue="https://pavelpetrcz.github.io/qrExcelAddOn/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://pavelpetrcz.github.io/qrExcelAddOn/assets/icon-128.png"/>
+  <HighResolutionIconUrl DefaultValue="https://pavelpetrcz.github.io/qrExcelAddOn/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://www.ppetr.cz"/>
   <AppDomains>
     <AppDomain>https://www.ppetr.cz</AppDomain>
