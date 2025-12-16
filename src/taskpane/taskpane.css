@@ -7,7 +7,6 @@
     position: absolute; /* Ensures it covers the entire task pane viewport */
     top: 0;
     left: 0;
-    background-color: #f0f0f0; /* Light gray background for the FRE */
     display: flex; /* Centers the content */
     justify-content: center;
     align-items: center;
