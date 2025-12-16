@@ -1,5 +1,4 @@
 # qrExcelAddOn - Platební QR kódy snadno
-## CZ
 Excel doplněk umí při zadání několika povinných - částka, měna, číslo účtu a několika nepovinných dat vygenerovat QR kód pro jednoduché načtení platebních údajů mobilním bankovnictvím 📱 nebo strojově v účetních systémech. 
 
 Doplněk v akci si můžete prohlédnout v následujícím videu 🎬.
@@ -10,4 +9,4 @@ Doplněk v akci si můžete prohlédnout v následujícím videu 🎬.
 Pokud vám něco nefunguje můžete v sekci [Issues](https://github.com/pavelpetrcz/qrExcelAddOn/issues) - založit nové téma/chybu, kde můžete vložit maximum informací a obrázek co nefunguje nebo co by bylo potřeba udělat lépe.
 
 # Data uživatelů
-Doplněk žádná data uživatelů nesbírá. Neobsahuje žádnou vlastní analytiku ani měření návštěvnosti. 
+Doplněk žádná data uživatelů nesbírá. Neobsahuje žádnou vlastní analytiku ani měření návštěvnosti. Více informací

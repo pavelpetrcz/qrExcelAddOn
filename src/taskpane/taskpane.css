@@ -1,5 +1,54 @@
-/* Single-column taskpane stylesheet (clean replacement) */
+/* FRE */
 
+/* Style for the full-screen overlay (FRE) */
+.full-screen-container {
+    height: 100%;
+    width: 100%;
+    position: absolute; /* Ensures it covers the entire task pane viewport */
+    top: 0;
+    left: 0;
+    background-color: #f0f0f0; /* Light gray background for the FRE */
+    display: flex; /* Centers the content */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.fre-content {
+    padding: 20px;
+    max-width: 80%;
+}
+
+/* General styling for the main container */
+#main-container {
+    padding: 10px;
+}
+
+/* Utility class to hide elements */
+.hidden {
+    display: none !important;
+}
+
+/* Button styling */
+#start-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #0078d4; /* Microsoft Blue */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#start-button:hover {
+    background-color: #005a9e;
+}
+
+/* FRE end */
+
+
+/* Single-column taskpane stylesheet (clean replacement) */
 :root {
   --page-bg: #ffffff;
   --page-fg: #222222;

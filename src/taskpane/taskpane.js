@@ -1,8 +1,8 @@
-
 /* global console, document, Excel, Office */
 
 Office.onReady((info) => {
   if (info.host === Office.HostType.Excel) {
+    checkFirstRunStatus();
     // Hook up the QR generation button when the add-in is ready
     const btn = document.getElementById("generateQrButton");
     if (btn) {
@@ -177,3 +177,40 @@ document.addEventListener("DOMContentLoaded", () => {
   if (btn) btn.addEventListener("click", submitForm);
   console.debug("DOMContentLoaded: Event bound for button");
 });
+
+function checkFirstRunStatus() {
+  const freContainer = document.getElementById("fre-container");
+  const mainContainer = document.getElementById("main-container");
+  const startButton = document.getElementById("start-button");
+
+  // 1. Check if the flag exists in localStorage
+  const hasCompletedFRE = localStorage.getItem(FRE_FLAG_KEY);
+
+  if (hasCompletedFRE === "true") {
+    // The flag is set: Show the main add-in UI
+    freContainer.classList.add("hidden");
+    mainContainer.classList.remove("hidden");
+  } else {
+    // The flag is NOT set: Show the First-Run Experience UI
+    freContainer.classList.remove("hidden");
+    mainContainer.classList.add("hidden");
+
+    // Attach event listener to the "Start" button
+    startButton.addEventListener("click", completeFirstRun);
+  }
+}
+
+function completeFirstRun() {
+  // 2. Set the flag in localStorage
+  localStorage.setItem(FRE_FLAG_KEY, "true");
+
+  // 3. Transition the view (hide FRE, show main content)
+  const freContainer = document.getElementById("fre-container");
+  const mainContainer = document.getElementById("main-container");
+
+  freContainer.classList.add("hidden");
+  mainContainer.classList.remove("hidden");
+
+  // Optional: Log the transition
+  console.log("FRE completed. Transitioning to main add-in content.");
+}
