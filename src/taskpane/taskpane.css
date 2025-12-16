@@ -29,11 +29,11 @@
     display: none !important;
 }
 
-/* Button styling */
+/* Button styling 
 #start-button {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #0078d4; /* Microsoft Blue */
+    background-color: #0078d4;
     color: white;
     border: none;
     border-radius: 4px;
@@ -43,7 +43,7 @@
 
 #start-button:hover {
     background-color: #005a9e;
-}
+}*/
 
 /* FRE end */
 
